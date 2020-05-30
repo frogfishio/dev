@@ -4,7 +4,7 @@
 2. Install Remote containers plugin https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
 3. Open repository in container
 
-!(doc/1.jpg)
+![Open repo in container](https://raw.githubusercontent.com/frogfishio/dev/master/doc/1.jpg)
 
 4. If you you have it already setup choose Frogfish Knona development environment as runtime image
 
