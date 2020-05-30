@@ -5,7 +5,7 @@
 
 # To fully customize the contents of this image, use the following Dockerfile instead:
 # https://github.com/microsoft/vscode-dev-containers/tree/v0.117.1/containers/ubuntu-18.04-git/.devcontainer/Dockerfile
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-ubuntu-18.04
+FROM frogfishio/dev
 
 # ** [Optional] Uncomment this section to install additional packages. **
 #
