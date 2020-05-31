@@ -20,6 +20,7 @@ RUN wget -qO - https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 # RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
 RUN wget -qO - https://deb.nodesource.com/setup_12.x | bash -
 RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+RUN apt-add-repository ppa:ansible/ansible
 
 # Configure apt and install packages
 RUN apt-get update \
