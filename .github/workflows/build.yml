@@ -10,6 +10,6 @@ jobs:
     - name: Publish to Registry
       uses: HurricanKai/Publish-Docker-Github-Action@master
       with:
-        name: frogfishio/dev
+        name: frogfishio/dev:latest
         username: frogfishio
         password: ${{ secrets.DOCKERHUB_SECRET }}
