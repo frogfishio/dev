@@ -61,12 +61,16 @@ RUN apt-get update \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install awscli
-RUN pip3 install jmespath
-RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v1.15.4/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl
-RUN chmod 755 /usr/local/bin/kubectl
-RUN wget https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip -O /tmp/terraform.zip -o /dev/null
-RUN unzip /tmp/terraform.zip -d /usr/local/bin/
+RUN pip3 install awscli \
+    && pip3 install jmespath
+
+RUN wget https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip -O /tmp/terraform.zip -o /dev/null \
+    && wget https://releases.hashicorp.com/packer/1.5.6/packer_1.5.6_linux_amd64.zip -O /tmp/packer.zip -o /dev/null \
+    && wget https://storage.googleapis.com/kubernetes-release/release/v1.17.6/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl -o /dev/null
+
+RUN chmod 755 /usr/local/bin/kubectl \
+    && unzip /tmp/terraform.zip -d /usr/local/bin/ \
+    && unzip /tmp/packer.zip -d /usr/local/bin/
 
 # Install supplemental tools
 RUN npm install -g gulp mocha typescript tsc-watch @angular/cli stylus nib
