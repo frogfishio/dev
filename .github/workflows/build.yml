@@ -13,4 +13,4 @@ jobs:
         name: frogfishio/dev
         username: frogfishio
         password: ${{ secrets.DOCKERHUB_SECRET }}
-        tagging: true
+        # tagging: true
