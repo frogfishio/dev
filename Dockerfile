@@ -16,8 +16,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y install wget gnupg software-properties-common 
 
 RUN wget -qO - https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-# RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
-# RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
+RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
 RUN wget -qO - https://deb.nodesource.com/setup_12.x | bash -
 RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 RUN apt-add-repository -y ppa:ansible/ansible
@@ -35,7 +35,7 @@ RUN apt-get update \
     jq \
     unzip \
     pwgen \
-    # redis \
+    redis \
     build-essential \
     apt-transport-https \
     ca-certificates \
@@ -45,7 +45,8 @@ RUN apt-get update \
     nginx \
     ansible \
     nodejs \
-    # mongodb-org \
+    golang-go \
+    mongodb-org \
     # docker-ce \
     docker-ce-cli \
     # containerd.io \
@@ -67,11 +68,21 @@ RUN pip3 install awscli \
 
 RUN wget https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip -O /tmp/terraform.zip -o /dev/null \
     && wget https://releases.hashicorp.com/packer/1.5.6/packer_1.5.6_linux_amd64.zip -O /tmp/packer.zip -o /dev/null \
-    && wget https://storage.googleapis.com/kubernetes-release/release/v1.17.6/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl -o /dev/null
+    && wget https://storage.googleapis.com/kubernetes-release/release/v1.17.6/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl -o /dev/null \
+    && wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz -O /tmp/helm.tgz -o /dev/null
 
 RUN chmod 755 /usr/local/bin/kubectl \
     && unzip /tmp/terraform.zip -d /usr/local/bin/ \
-    && unzip /tmp/packer.zip -d /usr/local/bin/
+    && unzip /tmp/packer.zip -d /usr/local/bin/ \
+    && tar zxf /tmp/helm.tgz -C /tmp && install /tmp/linux-amd64/helm /usr/local/bin
+
+# Install rust
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+# Install faas
+RUN helm repo add stable https://kubernetes-charts.storage.googleapis.com/ \
+    && curl -SLsf https://dl.get-arkade.dev/ | sudo sh \
+    && curl -sL https://cli.openfaas.com | sh
 
 # Install supplemental tools
 RUN npm install -g gulp mocha typescript tsc-watch @angular/cli stylus nib
