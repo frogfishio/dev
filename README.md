@@ -1,5 +1,15 @@
 # Kona development environment
 
+Features:
+
+* C,C++,Rust,Go,Nodejs,Python3
+* MongoDB, Redis, nginx
+* Snap, Helm, Arkade, Faas-cli, docker-cli, kubectl
+* gulp, mocha, tsc, stylus, angular-cli
+
+To get newest version: docker pull frogfishio/dev
+
+## Installation
 1. Install vscode
 2. Install Remote containers plugin https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
 3. Open repository in container
@@ -14,7 +24,7 @@ If you don't have it set up then you can choose just generic Ubuntu then in your
 
 To connect to private repos you'll need SSH keys set up
 
-1. Make sure you're running as an Administrator
+1. Make sure you're running as an Administrator (Powershell)
 Set-Service ssh-agent -StartupType Automatic
 Start-Service ssh-agent
 Get-Service ssh-agent
