@@ -28,6 +28,9 @@ RUN apt-get update \
     apt-utils \ 
     dialog \
     wget \
+    net-tools \
+    iputils-ping \
+    dnsutils \
     ca-certificates \
     curl \
     gnupg \

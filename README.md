@@ -6,6 +6,7 @@ Features:
 * MongoDB, Redis, nginx
 * Snap, Helm, Arkade, Faas-cli, docker-cli, kubectl
 * gulp, mocha, tsc, stylus, angular-cli
+* terraform, ansible, packer
 
 To get newest version: docker pull frogfishio/dev
 
