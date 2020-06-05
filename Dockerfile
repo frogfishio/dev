@@ -81,7 +81,7 @@ RUN chmod 755 /usr/local/bin/kubectl \
     && unzip /tmp/packer.zip -d /usr/local/bin/ \
     && tar zxf /tmp/helm.tgz -C /tmp && install /tmp/linux-amd64/helm /usr/local/bin \
     && tar zxf /tmp/golang.tgz -C /usr/local \
-    && sum -c "/tmp/rustup.sh -y" vscode
+    && su -c "/tmp/rustup.sh -y" vscode
 
 RUN echo -e "\nexport PATH=\$PATH:/usr/local/go/bin" >> /etc/profile
 
