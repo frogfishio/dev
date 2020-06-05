@@ -31,7 +31,6 @@ RUN apt-get update \
     net-tools \
     iputils-ping \
     dnsutils \
-    resolvconf \
     ca-certificates \
     curl \
     gnupg \
