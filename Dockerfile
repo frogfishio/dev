@@ -94,5 +94,7 @@ RUN helm repo add stable https://kubernetes-charts.storage.googleapis.com/ \
 # Install supplemental tools
 RUN npm install -g gulp mocha typescript tsc-watch @angular/cli stylus nib
 
+RUN rm -rf /tmp/*
+
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
