@@ -36,6 +36,7 @@ RUN apt-get update \
     gnupg \
     gnupg-agent \
     jq \
+    vim \
     unzip \
     pwgen \
     redis \
@@ -83,7 +84,7 @@ RUN chmod 755 /usr/local/bin/kubectl \
     && tar zxf /tmp/golang.tgz -C /usr/local \
     && su -c "/tmp/rustup.sh -y" vscode
 
-RUN echo -e "\nexport PATH=\$PATH:/usr/local/go/bin" >> /etc/profile
+RUN echo -e "\nexport PATH=\$PATH:/usr/local/go/bin:\$HOME/.cargo/bin" >> /home/vscode/.zshrc
 
 # Install faas
 RUN helm repo add stable https://kubernetes-charts.storage.googleapis.com/ \
