@@ -81,7 +81,7 @@ RUN chmod 755 /usr/local/bin/kubectl \
     && unzip /tmp/terraform.zip -d /usr/local/bin/ \
     && unzip /tmp/packer.zip -d /usr/local/bin/ \
     && tar zxf /tmp/helm.tgz -C /tmp && install /tmp/linux-amd64/helm /usr/local/bin \
-    && tar zxf /tmp/golang.tgz -C /usr/local 
+    && tar zxf /tmp/golang.tgz -C /usr/local \
     && su -c "/usr/local/bin/rustup-init -y" vscode
 
 RUN echo "\nexport PATH=\$PATH:/usr/local/go/bin" >> /home/vscode/.zshrc
