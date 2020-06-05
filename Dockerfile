@@ -73,8 +73,8 @@ RUN wget https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linu
     && wget https://releases.hashicorp.com/packer/1.5.6/packer_1.5.6_linux_amd64.zip -O /tmp/packer.zip -o /dev/null \
     && wget https://storage.googleapis.com/kubernetes-release/release/v1.17.6/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl -o /dev/null \
     && wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz -O /tmp/helm.tgz -o /dev/null \
-    && wget https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz -O /tmp/golang.tgz -o /dev/null 
-    # && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/rustup.sh && chmod +x /tmp/rustup.sh
+    && wget https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz -O /tmp/golang.tgz -o /dev/null \
+    && wget https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init -O /usr/local/bin/rustup-init -o /dev/null && chmod +x /usr/local/bin/rustup-init
     # && wget https://static.rust-lang.org/dist/rust-1.43.1-x86_64-unknown-linux-gnu.tar.gz -O /tmp/rust.tgz
 
 RUN chmod 755 /usr/local/bin/kubectl \
@@ -82,7 +82,7 @@ RUN chmod 755 /usr/local/bin/kubectl \
     && unzip /tmp/packer.zip -d /usr/local/bin/ \
     && tar zxf /tmp/helm.tgz -C /tmp && install /tmp/linux-amd64/helm /usr/local/bin \
     && tar zxf /tmp/golang.tgz -C /usr/local 
-    # && su -c "/tmp/rustup.sh -y" vscode
+    && su -c "/usr/local/bin/rustup-init -y" vscode
 
 RUN echo "\nexport PATH=\$PATH:/usr/local/go/bin" >> /home/vscode/.zshrc
 
