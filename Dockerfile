@@ -36,6 +36,7 @@ RUN apt-get update \
     gnupg \
     gnupg-agent \
     jq \
+    gettext-base \
     vim \
     unzip \
     pwgen \
